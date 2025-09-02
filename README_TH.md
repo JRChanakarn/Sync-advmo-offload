@@ -2,18 +2,18 @@
 
 ## ภาพรวม
 
-สคริปต์นี้เป็น **เครื่องมือ WP-CLI** สำหรับซ่อมแซมหรือกำหนดค่าเมทาดาทาที่จำเป็นของไฟล์สื่อ (Media Attachments) ที่เก็บไว้ใน **Cloudflare R2** ผ่านปลั๊กอิน ADV Media Offload
+สคริปต์นี้เป็น **เครื่องมือ WP-CLI** สำหรับซ่อมแซมหรือกำหนดค่า Metadata ที่จำเป็นของไฟล์สื่อ (Media Attachments) ที่เก็บไว้ใน **Cloudflare R2** ผ่านปลั๊กอิน ADV Media Offload
 
-โดยจะตรวจสอบให้แน่ใจว่าไฟล์แนบทุกไฟล์มีค่าของ **advmo\_\*** ครบถ้วน โดยเฉพาะเมื่อ `advmo_bucket` ไม่มีหรือไม่เท่ากับ `bbair`
+โดยจะตรวจสอบให้แน่ใจว่าไฟล์แนบทุกไฟล์มีค่าของ **advmo\_\*** ครบถ้วน โดยเฉพาะเมื่อ `advmo_bucket` ไม่มีหรือไม่เท่ากับ **ชื่อ Bucket ของคุณ** (`BBAIR` ในตัวอย่างนี้)
 
 ---
 
 ## คุณสมบัติ
 
-- ทำงานกับ **ไฟล์แนบของ WordPress** ที่มีเมทาดาทา `_wp_attached_file`
-- ตรวจสอบว่า `advmo_bucket` ถูกตั้งค่าเป็น `bbair` (ไม่สนตัวพิมพ์เล็ก-ใหญ่)
+- ทำงานกับ **ไฟล์แนบของ WordPress** ที่มี Metadata `_wp_attached_file`
+- ตรวจสอบว่า `advmo_bucket` ถูกตั้งค่าเป็นชื่อ Bucket ของคุณ (ตัวอย่าง `BBAIR` โดยไม่สนตัวพิมพ์เล็ก-ใหญ่)
 - ถ้าไม่มี/ไม่ถูกต้อง จะกำหนดค่าใหม่ดังนี้:
-  - `advmo_bucket = BBAir`
+  - `advmo_bucket = <YourBucketName>` (เช่น `BBAIR`)
   - `advmo_retention_policy = 1`
   - `advmo_path = ตัวอักษร 8 ตัวแรกของ _wp_attached_file`
   - `advmo_offloaded = 1`
